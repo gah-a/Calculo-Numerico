@@ -3,10 +3,10 @@ import math
 import pandas as pd
 from IPython.display import display
 
-# Parameters
+
 e_values = [0.0167, 0.2]
 Delta_f = math.pi/5
-f_targets = np.array([k*Delta_f for k in range(0, 11)])  # 0 to 2π
+f_targets = np.array([k*Delta_f for k in range(0, 11)])
 t0, tf = 0.0, 1.0
 N = 5000
 h = (tf - t0)/N
@@ -33,7 +33,7 @@ def rk4_integrate(e):
         fs.append(f)
     return np.array(ts), np.array(fs)
 
-# function to interpolate t at target f
+
 def interpolate_t(ts, fs, f_vals):
     t_at_f = []
     for ft in f_vals:
@@ -45,7 +45,7 @@ def interpolate_t(ts, fs, f_vals):
         else:
             t1, t2 = ts[idx-1], ts[idx]
             f1, f2 = fs[idx-1], fs[idx]
-            # linear interpolation
+           
             t_interp = t1 + (ft - f1)*(t2 - t1)/(f2 - f1)
             t_at_f.append(t_interp)
     return t_at_f
